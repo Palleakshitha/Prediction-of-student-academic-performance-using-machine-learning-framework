@@ -14,7 +14,7 @@ MODEL_PATH = os.path.join(
 model = joblib.load(MODEL_PATH)
 
 # ---------- Streamlit UI ----------
-st.title("🎓 Student CGPA Prediction")
+st.title("🎓Prediction of student academic performance")
 
 st.write("Enter student details below:")
 
@@ -39,3 +39,4 @@ if st.button("Predict CGPA"):
     prediction = model.predict(input_df)
 
     st.success(f"📘 Predicted CGPA: {prediction[0]:.2f}")
+
