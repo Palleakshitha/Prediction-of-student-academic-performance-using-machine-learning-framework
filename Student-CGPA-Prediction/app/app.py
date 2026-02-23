@@ -1,14 +1,20 @@
 import os
 import joblib
+import streamlit as st
+import pandas as pd
 
+# ---------- Load Model (Cloud-safe path) ----------
 MODEL_PATH = os.path.join(
     os.path.dirname(__file__),
     "..",
     "model",
     "cgpa_prediction_model.pkl"
 )
-st.title("🎓 Student CGPA Prediction")
+
 model = joblib.load(MODEL_PATH)
+
+# ---------- Streamlit UI ----------
+st.title("🎓 Student CGPA Prediction")
 
 st.write("Enter student details below:")
 
@@ -31,6 +37,5 @@ if st.button("Predict CGPA"):
     st.dataframe(input_df)
 
     prediction = model.predict(input_df)
-
 
     st.success(f"📘 Predicted CGPA: {prediction[0]:.2f}")
